@@ -1,1 +1,13 @@
-added npm package.json
+My Project
+---
+ 
+Welcome.
+ 
+ 
+ 
+Setup
+---
+ 
+```
+npm install
+```
