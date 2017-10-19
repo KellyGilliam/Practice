@@ -1,0 +1,60 @@
+<html>
+
+<head>
+  <!-- <script type = 'text/javascript' src = '/main.js'></script> -->
+  <script src="/bundle.js"></script>
+  <script src='/jquery.js'></script>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+  Hello World
+  <div id="title">TO DO</div>
+  <div id="leftDiv">
+    <!-- <button id="test-jquery">Test JQuery</button> -->
+    <form>
+      Make Your ToDo: <input id="toDoItemInput" type="text" name="toDoItem"><br>
+      <input id="submit" type="submit" value="Submit">
+    </form>
+  </div>
+  <div id="rightDiv">
+    <div id="listContainer"></div>
+  </div>
+</body>
+<script>
+  $(document).ready(function () {
+
+    //on page load, load one div per toDoItem in the database:
+    $.get('/getToDoList', { })
+       .done(function( data ) {
+      //  console.log(data);   
+      for (let i = 0; i < data.length; i++ ) {
+        $("#listContainer").prepend("<div class='toDoItemPost'>"+ data[i] + "</div>");
+      }  
+    });
+    
+    //add to db and create div:
+    $("#submit").click(function () {
+      let toDoItemInput = $('#toDoItemInput').val();
+      // console.log(toDoItemInput);
+      $.post('/createToDoItem', { toDoItem: toDoItemInput })
+        .done(function (data) {
+          $("#listContainer").prepend("<div class='toDoItemPost'>"+ toDoItemInput + "</div>");
+          console.log('post request fired')
+          // alert("Data Loaded: " + data);
+        });
+      return false; //prevents page refresh
+    });
+    
+    //remove from db and remove div:
+    //add post request for delete
+    $(document).on('click', '.toDoItemPost', function(){  //'(document)on()' allows modification of dynamically created elements:
+      $(this).remove();
+    });
+
+  });
+
+
+</script>
+
+</html>

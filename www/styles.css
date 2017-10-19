@@ -1,0 +1,25 @@
+body {
+    background-color: greenyellow;
+  }
+  #title {
+    position: center;
+  }
+  #leftDiv {
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: cyan;
+  }
+  #rightDiv{
+    width: 50%;
+    height: 100%;
+    float: right;
+    background-color:pink;
+    overflow: auto;
+  }
+
+  .toDoItemPost{
+    height: 40;
+    width: 100%;
+    background-color: orange;
+  }
