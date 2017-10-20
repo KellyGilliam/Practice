@@ -29,7 +29,8 @@
        .done(function( data ) {
       //  console.log(data);   
       for (let i = 0; i < data.length; i++ ) {
-        $("#listContainer").prepend("<div class='toDoItemPost'>"+ data[i] + "</div>");
+        console.log(data[i]);
+        $("#listContainer").prepend('<div id= "' + data[i]._id + '" class="toDoItemPost">'+ data[i].toDoItem + "</div>");
       }  
     });
     
@@ -39,8 +40,11 @@
       // console.log(toDoItemInput);
       $.post('/createToDoItem', { toDoItem: toDoItemInput })
         .done(function (data) {
-          $("#listContainer").prepend("<div class='toDoItemPost'>"+ toDoItemInput + "</div>");
-          console.log('post request fired')
+          //get back id from response and store it in the div.
+          //if this can't work, find another way.
+          $("#listContainer").prepend("<div id=" + data._id + ", class='toDoItemPost'>" + data.toDoItem + "</div>");
+          console.log('post request fired');
+          console.log('ID is ', data._id);
           // alert("Data Loaded: " + data);
         });
       return false; //prevents page refresh
@@ -54,6 +58,7 @@
     $(document).on('click', '.toDoItemPost', function(){  //'(document)on()' allows modification of dynamically created elements:
       console.log($(this).text()); //gets text value (to do item's value) of div.
       let toDoItemValue = $(this).text();
+      console.log($(this).attr('id'))
       $.post('/removeToDo', {toDoItem: toDoItemValue})
         .done(function (data) {
           console.log('to do item removed!');

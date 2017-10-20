@@ -62,6 +62,7 @@ app.use(bodyParser.json());
 app.post('/createToDoItem', toDoController.create);
 app.get('/getToDoList', toDoController.getAllToDos);
 app.post('/removeToDo', toDoController.removeToDo);
+// app.post('/updateToDo', toDoController.updateToDo);
 
 const server = app.listen(3000, function() {
   const host = server.address().address;
