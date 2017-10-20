@@ -15,7 +15,7 @@ mongoose.connection.once('open', (err, success) => {
   console.log('CONNECTED YAYYYYY');
 })
  
-app.use(express.static(__dirname + '/www'));
+app.use(express.static(__dirname + '/www'));  //lets things load right away without individual requests?
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
   filename: 'bundle.js',
@@ -29,6 +29,8 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(bodyParser.urlencoded({ extended: true })); //YOU NEED THIS!
 app.use(bodyParser.json());
 // const cookieParser = require('cookie-parser')
+
+
 
 // app.get('/styless.css', (req, res) => {
 //     res.sendfile('./styles.css');
@@ -59,6 +61,7 @@ app.use(bodyParser.json());
 
 app.post('/createToDoItem', toDoController.create);
 app.get('/getToDoList', toDoController.getAllToDos);
+app.post('/removeToDo', toDoController.removeToDo);
 
 const server = app.listen(3000, function() {
   const host = server.address().address;

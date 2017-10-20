@@ -47,8 +47,17 @@
     });
     
     //remove from db and remove div:
-    //add post request for delete
+    //add post request for delete:
+
+   //_id: req.params.employee_id
+
     $(document).on('click', '.toDoItemPost', function(){  //'(document)on()' allows modification of dynamically created elements:
+      console.log($(this).text()); //gets text value (to do item's value) of div.
+      let toDoItemValue = $(this).text();
+      $.post('/removeToDo', {toDoItem: toDoItemValue})
+        .done(function (data) {
+          console.log('to do item removed!');
+        });
       $(this).remove();
     });
 
