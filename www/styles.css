@@ -1,5 +1,11 @@
+/* { margin: 0; padding: 0; } */
+
 body {
-    background-color: greenyellow;
+    background: url('https://i.pinimg.com/originals/8d/b7/46/8db746ea0f28bdd22eae8b3ee10ac16a.gif') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
   }
   #title {
     position: center;
@@ -8,18 +14,28 @@ body {
     width: 50%;
     height: 100%;
     float: left;
-    background-color: cyan;
   }
-  #rightDiv{
-    width: 50%;
-    height: 100%;
+  #rightDiv {
+    min-width: 300;
+    max-width: 400;
+    height: 95%;
     float: right;
-    background-color:pink;
     overflow: auto;
+    background: rgba(176, 209, 223, 0.2);
+    border: 2px solid rgba(176, 209, 223, 0.2);
+    border-radius: 10px;
   }
-
-  .toDoItemPost{
-    height: 40;
-    width: 100%;
-    background-color: orange;
+  .toDoItemPost {
+    height: 30;
+    max-width: 400;
+    margin: 10;
+    padding-top: 10;
+    text-align:center;
+    color: #0B071D;
+    background: rgba(21, 95, 129, 0.7);
+    border: 2px solid rgba(176, 209, 223, 0.2);
+    border-radius: 4px;
+  }
+  #toDoItemInput {
+    
   }

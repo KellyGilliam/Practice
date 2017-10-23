@@ -29,9 +29,9 @@ toDoController.getAllToDos = (req, res) => {
 };
 
 toDoController.removeToDo = (req, res) => {
-  console.log('BODY is:', req.body.toDoItem);
+  console.log('BODY is:', req.body);
   let itemToRemove = req.body.toDoItem;
-  ToDo.remove({ toDoItem: itemToRemove }, function (err) {
+  ToDo.remove({ _id: itemToRemove }, function (err) {
     if (err) return handleError(err);
     // removed!
   });
